@@ -1,6 +1,5 @@
-package com.demyanenko.users;
+package com.demyanenko.user;
 
-import com.demyanenko.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

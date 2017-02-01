@@ -1,4 +1,4 @@
-package com.demyanenko;
+package com.demyanenko.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,5 @@
-package com.demyanenko.repositories;
+package com.demyanenko.user;
 
-import com.demyanenko.users.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

@@ -1,4 +1,4 @@
-package com.demyanenko.entities;
+package com.demyanenko.core;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private final Long id;
     @Version
-    private Long version;
+    private Long version; // might be useful for client side
 
     protected BaseEntity() {
         id = null;

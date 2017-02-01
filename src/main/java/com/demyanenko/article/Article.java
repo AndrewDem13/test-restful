@@ -1,4 +1,7 @@
-package com.demyanenko.entities;
+package com.demyanenko.article;
+
+import com.demyanenko.core.BaseEntity;
+import com.demyanenko.comment.Comment;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Article extends BaseEntity{
+public class Article extends BaseEntity {
     @NotNull
     @Size(min = 2, max = 140)
     private String title;
     @NotNull
     @Size(min = 5)
     private String text;
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // deleting article with its comments
     private List<Comment> comments;
 
     protected Article() {
@@ -24,9 +27,9 @@ public class Article extends BaseEntity{
         comments = new ArrayList<>();
     }
 
-    public Article(String tittle, String text) {
+    public Article(String title, String text) {
         this();
-        this.title = tittle;
+        this.title = title;
         this.text = text;
     }
 
@@ -34,6 +37,8 @@ public class Article extends BaseEntity{
         comment.setArticle(this);
         comments.add(comment);
     }
+
+    /**  Getters & Setters  **/
 
     public List<Comment> getComments() {
         return comments;

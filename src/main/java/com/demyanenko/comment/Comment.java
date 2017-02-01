@@ -1,7 +1,7 @@
-package com.demyanenko.entities;
+package com.demyanenko.comment;
 
-import com.demyanenko.users.User;
-
+import com.demyanenko.article.Article;
+import com.demyanenko.core.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -14,8 +14,6 @@ public class Comment extends BaseEntity {
     private String text;
     @ManyToOne
     private Article article;
-    @ManyToOne
-    private User commentator;
 
     protected Comment() {
         super();
@@ -32,6 +30,8 @@ public class Comment extends BaseEntity {
         this.article = article;
     }
 
+    /**  Getters & Setters  **/
+
     public Article getArticle() {
         return article;
     }
@@ -46,13 +46,5 @@ public class Comment extends BaseEntity {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public User getCommentator() {
-        return commentator;
-    }
-
-    public void setCommentator(User commentator) {
-        this.commentator = commentator;
     }
 }

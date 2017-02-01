@@ -1,6 +1,6 @@
-package com.demyanenko.users;
+package com.demyanenko.user;
 
-import com.demyanenko.entities.BaseEntity;
+import com.demyanenko.core.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +30,8 @@ public class User extends BaseEntity {
         setPassword(password);
         this.roles = roles;
     }
+
+    /**  Getters & Setters  **/
 
     public void setPassword(String password) {
         this.password = PASSWORD_ENCODER.encode(password);
