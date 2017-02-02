@@ -12,7 +12,7 @@ public interface ArticleRepository extends PagingAndSortingRepository<Article, L
     Page<Article> findByTitleContains(@Param("title") String title, Pageable page);
 
 
-    /** POST / PUT / DELETE is only for authorized users **/
+    /** POST / PUT / DELETE is only for administrators **/
 
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN')")

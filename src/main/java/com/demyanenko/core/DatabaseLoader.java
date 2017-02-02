@@ -28,8 +28,13 @@ public class DatabaseLoader  implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
         users.save(new User("Super", "User", "admin", "admin", new String[]{"ROLE_ADMIN"}));
+        users.save(new User("Regular", "User", "user", "user", new String[]{"ROLE_USER"}));
 
-        /**  Previous testing for REST API without Security: fills DB with 10 articles with 5 comments for each **/
+        // This one is emulating unauthorized user for testing
+        users.save(new User("Anonymous", "User", "anon", "anon", new String[]{"ROLE_ANONYMOUS"}));
+
+
+        //  Previous testing for REST API without Security: fills DB with 10 articles with 5 comments for each
         /*
         IntStream.range(0, 10).forEach(i -> {
             Article article = new Article("Title"+i, "Here's text!");
