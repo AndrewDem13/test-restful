@@ -1,5 +1,7 @@
-package com.demyanenko.user;
+package com.demyanenko.core;
 
+import com.demyanenko.entities.User;
+import com.demyanenko.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DetailsService implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     UserRepository users;
 

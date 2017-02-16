@@ -1,7 +1,6 @@
 package com.demyanenko.core;
 
-import com.demyanenko.user.DetailsService;
-import com.demyanenko.user.User;
+import com.demyanenko.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,7 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Autowired
-    DetailsService userDetailsService;
+    UserDetailsServiceImpl userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,5 +29,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
                 /** Feature below is for testing, NOT for production **/
                 .and()
                 .csrf().disable();
+        http.authorizeRequests().antMatchers("/", "/articles", "/articles/{id}", "/articles/{id}/comments", "/articles/{id}/author",
+                "/comments", "/comments/{id}","/comments/{id}/article", "/comments/{id}/author").permitAll().anyRequest().authenticated()
+                .and().
+                authorizeRequests().antMatchers("/users").permitAll().anyRequest().hasRole("ADMIN");
     }
 }

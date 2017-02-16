@@ -1,6 +1,6 @@
-package com.demyanenko.user;
+package com.demyanenko.entities;
 
-import com.demyanenko.core.BaseEntity;
+import com.demyanenko.entities.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,12 +18,9 @@ public class User extends BaseEntity {
     @JsonIgnore
     private String[] roles;
 
-    protected User() {
-        super();
-    }
+    protected User() {    }
 
     public User(String firstName, String lastName, String username, String password, String[] roles) {
-        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;

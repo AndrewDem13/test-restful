@@ -1,10 +1,8 @@
-package com.demyanenko.article;
-
-import com.demyanenko.core.BaseEntity;
-import com.demyanenko.comment.Comment;
+package com.demyanenko.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,16 +19,16 @@ public class Article extends BaseEntity {
     private String text;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // deleting article with its comments
     private List<Comment> comments;
+    @ManyToOne
+    private User author;
 
-    protected Article() {
-        super();
-        comments = new ArrayList<>();
-    }
+    protected Article() {    }
 
-    public Article(String title, String text) {
-        this();
+    public Article(String title, String text, User author) {
         this.title = title;
         this.text = text;
+        this.author = author;
+        comments = new ArrayList<>();
     }
 
     public void addComment(Comment comment) {
@@ -50,5 +48,9 @@ public class Article extends BaseEntity {
 
     public String getText() {
         return text;
+    }
+
+    public User getAuthor() {
+        return author;
     }
 }

@@ -1,10 +1,10 @@
 package com.demyanenko.core;
 
-import com.demyanenko.article.Article;
-import com.demyanenko.comment.Comment;
-import com.demyanenko.article.ArticleRepository;
-import com.demyanenko.user.UserRepository;
-import com.demyanenko.user.User;
+import com.demyanenko.entities.Article;
+import com.demyanenko.entities.Comment;
+import com.demyanenko.repositories.ArticleRepository;
+import com.demyanenko.repositories.UserRepository;
+import com.demyanenko.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -32,7 +32,6 @@ public class DatabaseLoader  implements ApplicationRunner{
 
         // This one is emulating unauthorized user for testing
         users.save(new User("Anonymous", "User", "anon", "anon", new String[]{"ROLE_ANONYMOUS"}));
-
 
         //  Previous testing for REST API without Security: fills DB with 10 articles with 5 comments for each
         /*

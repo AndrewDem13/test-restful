@@ -1,8 +1,4 @@
-package com.demyanenko.comment;
-
-import com.demyanenko.article.Article;
-import com.demyanenko.core.BaseEntity;
-import com.demyanenko.user.User;
+package com.demyanenko.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -19,14 +15,9 @@ public class Comment extends BaseEntity {
     @ManyToOne
     private User author;
 
-    protected Comment() {
-        super();
-    }
-
-
+    protected Comment() {    }
 
     public Comment(String text, Article article, User user) {
-        this();
         this.text = text;
         this.article = article;
         this.author = user;
